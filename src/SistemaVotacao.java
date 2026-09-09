@@ -175,8 +175,13 @@ do {
                             percentual
                     );
                       }
+                    int maiorQuantidadeVotos = votosCandidatos[0];
 
-
+                    for (int i = 1; i < quantidadeCandidatos; i++) {
+                        if (votosCandidatos[i] > maiorQuantidadeVotos) {
+                            maiorQuantidadeVotos = votosCandidatos[i];
+                        }
+                    }
 
                     break;
                 case 4:
