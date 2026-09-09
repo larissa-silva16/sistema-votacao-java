@@ -145,7 +145,7 @@ do {
 
             switch (opcao) {
                 case 1:
-                    System.out.println("Cadastro selecionado.");
+                    cadastrarCandidatos();
                     break;
                 case 2:
                     System.out.println("Votação selecionada.");
@@ -214,7 +214,7 @@ do {
 
                     break;
                 case 4:
-                    System.out.println("Matriz selecionada.");
+                    exibirMatrizVotos();
                     break;
                 case 5:
                     System.out.println("Sistema encerrado.");
@@ -224,6 +224,7 @@ do {
             }
         } while (opcao != 5);
 
+        scanner.close();
     }
 
     static int lerInteiro(String mensagem) {
