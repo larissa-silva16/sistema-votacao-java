@@ -36,6 +36,17 @@ public class SistemaVotacao {
             );
         }
     }
+    int turma;
+
+do {
+        turma = lerInteiro("Informe a turma de 1 a 3: ");
+
+        if (turma < 1 || turma > TOTAL_TURMAS) {
+            System.out.println("Turma inválida.");
+        }
+    } while (turma < 1 || turma > TOTAL_TURMAS);
+
+    int indiceTurma = turma - 1;
 
     static Scanner scanner = new Scanner(System.in);
 
