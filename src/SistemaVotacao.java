@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class SistemaVotacao {
+      static Scanner scanner = new Scanner(System.in);
 
     static final int MAX_CANDIDATOS = 5;
     static final int TOTAL_TURMAS = 3;
@@ -113,21 +114,6 @@ public class SistemaVotacao {
         }
     }
 
-
-    int turma;
-
-do {
-        turma = lerInteiro("Informe a turma de 1 a 3: ");
-
-        if (turma < 1 || turma > TOTAL_TURMAS) {
-            System.out.println("Turma inválida.");
-        }
-    } while (turma < 1 || turma > TOTAL_TURMAS);
-
-    int indiceTurma = turma - 1;
-
-    static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
 
         int opcao;
@@ -148,7 +134,17 @@ do {
                     cadastrarCandidatos();
                     break;
                 case 2:
-                    System.out.println("Votação selecionada.");
+                    System.out.println("Votação selecionada.");int turma;
+
+                    do {
+                        turma = lerInteiro("Informe a turma de 1 a 3: ");
+
+                        if (turma < 1 || turma > TOTAL_TURMAS) {
+                            System.out.println("Turma inválida.");
+                        }
+                    } while (turma < 1 || turma > TOTAL_TURMAS);
+
+                    int indiceTurma = turma - 1;
                     break;
                 case 3:
                     System.out.println("Resultado selecionado.");
@@ -257,22 +253,34 @@ do {
                 System.out.println("Quantidade inválida.");
             }
         } while (quantidade < 1 || quantidade > MAX_CANDIDATOS);
-    }
-    {
-        for (int i = 0; i < quantidade; i++) {
 
+        for (int i = 0; i < quantidade; i++) {
         int numero;
 
         while (true) {
             numero = lerInteiro(
                     "\nNúmero do candidato " + (i + 1) + ": "
             );
-
             if (numero <= 0) {
                 System.out.println("O número deve ser maior que zero.");
                 continue;
-            }
 
+            }
+            String nome;
+
+        do {
+            System.out.print("Nome do candidato: ");
+            nome = scanner.nextLine().trim();
+
+            if (nome.isEmpty()) {
+                System.out.println("O nome não pode ficar vazio.");
+            }
+        } while (nome.isEmpty());
+
+        numerosCandidatos[i] = numero;
+        nomesCandidatos[i] = nome;
+        votosCandidatos[i] = 0;
+        quantidadeCandidatos++;
             boolean numeroRepetido = false;
 
             for (int j = 0; j < i; j++) {
@@ -290,20 +298,7 @@ do {
             numerosCandidatos[i] = numero;
             break;
         }
+        }
+
     }
-
-        String nome;
-
-        do {
-            System.out.print("Nome do candidato: ");
-            nome = scanner.nextLine().trim();
-
-            if (nome.isEmpty()) {
-                System.out.println("O nome não pode ficar vazio.");
-            }
-        } while (nome.isEmpty());
-
-        numerosCandidatos[i] = numero;
-        nomesCandidatos[i] = nome;
-        votosCandidatos[i] = 0;
-        quantidadeCandidatos++;
+}
